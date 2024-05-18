@@ -1,0 +1,4 @@
+interface Elevator {
+  id: number;
+
+}

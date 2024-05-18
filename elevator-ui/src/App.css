@@ -1,0 +1,29 @@
+.app-background {
+    background-color: var(--app-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-main-panel {
+    min-height: 600px;
+    width: 500px;
+    background-color: var(--main-panel-color);
+    box-shadow: var(--main-shadow);
+    border-radius: var(--border-radius-size);
+    display: flex;
+    flex-direction: row;
+}
+
+.elevator-control-section {
+
+}
+
+.elevator-visual-section {
+
+}
+
+.elevator-admin-section {
+
+}
