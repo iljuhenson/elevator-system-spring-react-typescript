@@ -2,6 +2,7 @@
     --app-bg-color: #F5F5F7;
     --main-panel-color: #FEFEFE;
     --button-color: #414246;
+    --button-text-color: #FEFEFE;
     --elevator-down-button-color: #E84E4E;
     --elevator-up-button-color: #217A7C;
     --elevator-visual-section-bg-color: #DCDCDC;
@@ -11,7 +12,7 @@
     --elevator-visual-section-floor-pickup: #217A7C;
 
     --border-radius-size: 16px;
-    --elevator-visual-section-floor-size: 20;
+    --elevator-visual-section-floor-size: 18;
     --main-shadow: 0 12px 40px 4px rgba(112, 144, 176, .2);
 }
 

@@ -8,7 +8,6 @@
 
 .app-main-panel {
     min-height: 600px;
-    width: 500px;
     background-color: var(--main-panel-color);
     box-shadow: var(--main-shadow);
     border-radius: var(--border-radius-size);
@@ -18,14 +17,23 @@
 }
 
 .elevator-control-section {
-
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 5px 10px;
 }
 
 .elevator-visual-section {
     background-color: var(--elevator-visual-section-bg-color);
-    width: 30px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 10px;
+    gap: 10px;
 }
 
 .elevator-admin-section {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 10px;
 }

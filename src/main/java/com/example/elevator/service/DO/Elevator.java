@@ -39,6 +39,24 @@ public class Elevator {
         this.direction = direction;
     }
 
+    public Elevator() {
+    }
+
+    public Elevator(int id, List<ElevatorUser> destinationFloors, int currentFloor, int direction) {
+        this.id = id;
+        this.destinationFloors = destinationFloors;
+        this.currentFloor = currentFloor;
+        this.direction = direction;
+    }
+
+    public List<ElevatorUser> getDestinationFloors() {
+        return destinationFloors;
+    }
+
+    public void setDestinationFloors(List<ElevatorUser> destinationFloors) {
+        this.destinationFloors = destinationFloors;
+    }
+
     public void addStop(ElevatorUser user) {
         destinationFloors.add(user);
     }
@@ -49,8 +67,8 @@ public class Elevator {
             return;
         }
 
-        int lowestFloor = getLowestFloor();
-        int highestFloor = getHighestFloor();
+        int lowestFloor = findLowestFloor();
+        int highestFloor = findHighestFloor();
 
         if(direction == 0) {
             direction = (int) Math.signum(lowestFloor - currentFloor);
@@ -72,17 +90,17 @@ public class Elevator {
         }
     }
 
-    public int getLowestFloor() {
-        return Collections.min(destinationFloors, (u1, u2) -> u1.getActiveDestination() - u2.getActiveDestination()).getActiveDestination();
+    public int findLowestFloor() {
+        return Collections.min(destinationFloors, (u1, u2) -> u1.calculateActiveDestination() - u2.calculateActiveDestination()).calculateActiveDestination();
     }
 
-    public int getHighestFloor() {
-        return Collections.max(destinationFloors, (u1, u2) -> u1.getActiveDestination() - u2.getActiveDestination()).getActiveDestination();
+    public int findHighestFloor() {
+        return Collections.max(destinationFloors, (u1, u2) -> u1.calculateActiveDestination() - u2.calculateActiveDestination()).calculateActiveDestination();
     }
 
     public int findDistanceFromFloor(int floor, int afterPickupDirection) {
-        int lastDestinationFloor = getLowestFloor();
-        int firstDestinationFloor = getHighestFloor();
+        int lastDestinationFloor = findLowestFloor();
+        int firstDestinationFloor = findHighestFloor();
 
         if (afterPickupDirection == direction && currentFloor - floor == 0) {
             return 0;

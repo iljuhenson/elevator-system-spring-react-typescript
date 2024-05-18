@@ -13,9 +13,9 @@ function ElevatorVisual({ elevatorsStatus }: ElevatorVisualProps) {
         {elevatorsStatus.map(elevator => {
           const floors: Array<ReactElement> = [];
 
-          for (let i = 29; i >= 0; ++i) {
+          for (let i = 29; i >= 0; --i) {
             if (elevator.currentFloor === i) {
-              floors.push(<div
+              floors.push(<div key={i}
                   className="elevator-visual-current-floor-outline elevator-visual-section-floor-main-color">
                   <div className="elevator-visual-current-floor-gap elevator-visual-current-floor-gap-color">
                     <div className="elevator-visual-current-floor-inside elevator-visual-section-floor-main-color">
@@ -24,8 +24,8 @@ function ElevatorVisual({ elevatorsStatus }: ElevatorVisualProps) {
                   </div>
                 </div>
               )
-            } else if(elevator.destinationFloors.filter(user => user.pickupFloor === i && !user.isPickedUp)) {
-              floors.push(<div
+            } else if(elevator.destinationFloors.filter(user => user.pickupFloor === i && !user.isPickedUp).length != 0) {
+              floors.push(<div key={i}
                 className="elevator-visual-current-floor-outline elevator-visual-section-floor-pickup-color">
                 <div className="elevator-visual-current-floor-gap">
                   <div className="elevator-visual-current-floor-inside">
@@ -33,8 +33,8 @@ function ElevatorVisual({ elevatorsStatus }: ElevatorVisualProps) {
                   </div>
                 </div>
               </div>)
-            } else if(elevator.destinationFloors.filter(user => user.destinationFloor === i && user.isPickedUp)) {
-              floors.push(<div
+            } else if(elevator.destinationFloors.filter(user => user.destinationFloor === i && user.isPickedUp).length != 0) {
+              floors.push(<div key={i}
                 className="elevator-visual-current-floor-outline elevator-visual-section-floor-destination-active-color">
                 <div className="elevator-visual-current-floor-gap">
                   <div className="elevator-visual-current-floor-inside">
@@ -43,8 +43,8 @@ function ElevatorVisual({ elevatorsStatus }: ElevatorVisualProps) {
                 </div>
               </div>)
 
-            } else if(elevator.destinationFloors.filter(user => user.destinationFloor === i && !user.isPickedUp)) {
-              floors.push(<div
+            } else if(elevator.destinationFloors.filter(user => user.destinationFloor === i && !user.isPickedUp).length != 0) {
+              floors.push(<div key={i}
                 className="elevator-visual-current-floor-outline elevator-visual-section-floor-destination-inactive-color">
                 <div className="elevator-visual-current-floor-gap">
                   <div className="elevator-visual-current-floor-inside">
@@ -55,7 +55,7 @@ function ElevatorVisual({ elevatorsStatus }: ElevatorVisualProps) {
 
             } else {
               floors.push(
-                <div
+                <div key={i}
                   className="elevator-visual-current-floor-outline elevator-visual-section-floor-main-color">
                   <div className="elevator-visual-current-floor-gap">
                     <div className="elevator-visual-current-floor-inside">

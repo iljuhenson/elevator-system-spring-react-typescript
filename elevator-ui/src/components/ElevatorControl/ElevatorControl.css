@@ -1,0 +1,45 @@
+.floor-control {
+    display: flex;
+    justify-content: space-between;
+    height: calc(var(--elevator-visual-section-floor-size) * 1px);
+    align-items: center;
+}
+
+.floor-label {
+    background-color: var(--button-color);
+    width: calc(var(--elevator-visual-section-floor-size) * 1px);
+    height: calc(var(--elevator-visual-section-floor-size) * 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--button-text-color);
+    border-radius: var(--border-radius-size);
+    font-size: calc((var(--elevator-visual-section-floor-size) / 1.7) * 1px);
+    line-height: calc((var(--elevator-visual-section-floor-size) / 1.7) * 1px);
+
+}
+
+.floor-label-text {
+
+}
+
+.pickup-buttons-container {
+    display: flex;
+}
+
+.pickup-up {
+    width: 0;
+    height: 0;
+    border-left: calc(var(--elevator-visual-section-floor-size) / 2 * 1px) solid transparent;
+    border-right: calc(var(--elevator-visual-section-floor-size) / 2 * 1px) solid transparent;
+    border-bottom: calc(var(--elevator-visual-section-floor-size) / 1.5 * 1px) solid var(--elevator-up-button-color);
+}
+
+.pickup-down {
+    width: 0;
+    height: 0;
+    border-left: calc(var(--elevator-visual-section-floor-size) / 2 * 1px) solid transparent;
+    border-right: calc(var(--elevator-visual-section-floor-size) / 2 * 1px) solid transparent;
+    border-top: calc(var(--elevator-visual-section-floor-size) / 1.5 * 1px) solid var(--elevator-down-button-color);
+}

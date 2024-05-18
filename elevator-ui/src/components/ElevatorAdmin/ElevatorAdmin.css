@@ -1,0 +1,31 @@
+.admin-button {
+    background-color: var(--button-color);
+    border-radius: var(--border-radius-size);
+    border: none;
+    font-weight: bold;
+    color: var(--button-text-color);
+}
+
+.square-button {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+}
+
+.rectangular-button {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.square-button-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.admin-button-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

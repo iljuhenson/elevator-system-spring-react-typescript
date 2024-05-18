@@ -16,6 +16,10 @@ public class ElevatorUser {
         return pickupFloor;
     }
 
+    public void setPickedUp(boolean pickedUp) {
+        isPickedUp = pickedUp;
+    }
+
     public void setPickupFloor(int pickupFloor) {
         this.pickupFloor = pickupFloor;
     }
@@ -36,7 +40,13 @@ public class ElevatorUser {
         this.destinationFloor = destinationFloor;
     }
 
-    public int getActiveDestination() {
+    public ElevatorUser(int pickupFloor, int destinationFloor, boolean isPickedUp) {
+        this.pickupFloor = pickupFloor;
+        this.destinationFloor = destinationFloor;
+        this.isPickedUp = isPickedUp;
+    }
+
+    public int calculateActiveDestination() {
         return this.isPickedUp ? this.destinationFloor : this.pickupFloor;
     }
 }
