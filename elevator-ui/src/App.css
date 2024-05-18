@@ -14,6 +14,7 @@
     border-radius: var(--border-radius-size);
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .elevator-control-section {
@@ -21,7 +22,8 @@
 }
 
 .elevator-visual-section {
-
+    background-color: var(--elevator-visual-section-bg-color);
+    width: 30px;
 }
 
 .elevator-admin-section {

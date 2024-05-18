@@ -1,0 +1,57 @@
+.elevator-visual-floors-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.elevator-visual-section-floor-main-color {
+    background-color: var(--elevator-visual-section-floor-main);
+}
+
+.elevator-visual-section-floor-destination-inactive-color {
+    background-color: var(--elevator-visual-section-floor-destination-inactive);
+}
+
+.elevator-visual-section-floor-destination-active-color {
+    background-color: var(--elevator-visual-section-floor-destination-active);
+}
+
+.elevator-visual-section-floor-pickup-color {
+    background-color: var(--elevator-visual-section-floor-pickup);
+}
+
+.elevator-visual-current-floor-gap-color {
+    background-color: var(--elevator-visual-section-bg-color);
+}
+
+.elevator-visual-current-floor-outline {
+    width: calc(var(--elevator-visual-section-floor-size) * 1px);
+    height: calc(var(--elevator-visual-section-floor-size) * 1px);
+    border-radius: var(--border-radius-size);
+    position: relative;
+}
+
+.elevator-visual-current-floor-gap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc((var(--elevator-visual-section-floor-size) - 6) * 1px);
+    height: calc((var(--elevator-visual-section-floor-size) - 6) * 1px);
+    border-radius: var(--border-radius-size);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.elevator-visual-current-floor-inside {
+    width: calc((var(--elevator-visual-section-floor-size) - 12) * 1px);
+    height: calc((var(--elevator-visual-section-floor-size) - 12) * 1px);
+    border-radius: var(--border-radius-size);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
