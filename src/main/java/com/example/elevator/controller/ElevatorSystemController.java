@@ -37,4 +37,9 @@ public class ElevatorSystemController {
         // to implement
     }
 
+    @PostMapping("/update/amount/{elevatorsAmount}")
+    public void updateElevatorsAmount(@PathVariable int elevatorsAmount) {
+        elevatorSystem.updateElevatorsAmount(elevatorsAmount);
+    }
+
 }

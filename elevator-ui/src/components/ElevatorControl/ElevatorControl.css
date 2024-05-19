@@ -16,30 +16,34 @@
     color: var(--button-text-color);
     border-radius: var(--border-radius-size);
     font-size: calc((var(--elevator-visual-section-floor-size) / 1.7) * 1px);
-    line-height: calc((var(--elevator-visual-section-floor-size) / 1.7) * 1px);
-
+    margin-right: 8px;
 }
 
 .floor-label-text {
-
+    line-height: calc((var(--elevator-visual-section-floor-size) / 1.7) * 1px);
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 .pickup-buttons-container {
     display: flex;
+    justify-content: space-between;
+    flex: 1;
 }
 
-.pickup-up {
+.pickup {
     width: 0;
     height: 0;
     border-left: calc(var(--elevator-visual-section-floor-size) / 2 * 1px) solid transparent;
     border-right: calc(var(--elevator-visual-section-floor-size) / 2 * 1px) solid transparent;
+    cursor: pointer;
+}
+
+.pickup-up {
     border-bottom: calc(var(--elevator-visual-section-floor-size) / 1.5 * 1px) solid var(--elevator-up-button-color);
 }
 
 .pickup-down {
-    width: 0;
-    height: 0;
-    border-left: calc(var(--elevator-visual-section-floor-size) / 2 * 1px) solid transparent;
-    border-right: calc(var(--elevator-visual-section-floor-size) / 2 * 1px) solid transparent;
     border-top: calc(var(--elevator-visual-section-floor-size) / 1.5 * 1px) solid var(--elevator-down-button-color);
 }

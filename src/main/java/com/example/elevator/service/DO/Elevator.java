@@ -1,6 +1,7 @@
 package com.example.elevator.service.DO;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Elevator {
     private int id;
@@ -81,7 +82,7 @@ public class Elevator {
             }
         });
 
-        destinationFloors = destinationFloors.stream().filter(user -> user.isPickedUp() && user.getDestinationFloor() == currentFloor).toList();
+        destinationFloors = destinationFloors.stream().filter(user -> !(user.isPickedUp() && user.getDestinationFloor() == currentFloor)).collect(Collectors.toList());
 
         if (currentFloor > highestFloor) {
             direction = -1;
@@ -91,10 +92,16 @@ public class Elevator {
     }
 
     public int findLowestFloor() {
+        if(destinationFloors.isEmpty()) {
+            return -1;
+        }
         return Collections.min(destinationFloors, (u1, u2) -> u1.calculateActiveDestination() - u2.calculateActiveDestination()).calculateActiveDestination();
     }
 
     public int findHighestFloor() {
+        if(destinationFloors.isEmpty()) {
+            return -1;
+        }
         return Collections.max(destinationFloors, (u1, u2) -> u1.calculateActiveDestination() - u2.calculateActiveDestination()).calculateActiveDestination();
     }
 
@@ -102,7 +109,9 @@ public class Elevator {
         int lastDestinationFloor = findLowestFloor();
         int firstDestinationFloor = findHighestFloor();
 
-        if (afterPickupDirection == direction && currentFloor - floor == 0) {
+        if (direction == 0) {
+            return Math.abs(currentFloor - floor);
+        } else if (afterPickupDirection == direction && currentFloor - floor == 0) {
             return 0;
         } else if (afterPickupDirection == direction && direction * (currentFloor - floor) > 0) {
             return lastDestinationFloor - firstDestinationFloor + Math.min(floor, currentFloor) - firstDestinationFloor + lastDestinationFloor - Math.max(floor, currentFloor);

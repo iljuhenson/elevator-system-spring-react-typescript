@@ -2,14 +2,24 @@ import "./ElevatorAdmin.css"
 
 interface ElevatorAdminProps {
   updateElevatorsStatus: Function;
+  setElevatorsAmount: Function;
+  elevatorsAmount: number
 }
 
-function ElevatorAdmin({ updateElevatorsStatus }: ElevatorAdminProps) {
+function ElevatorAdmin({ updateElevatorsStatus, setElevatorsAmount, elevatorsAmount }: ElevatorAdminProps) {
   const step = async () => {
     await fetch("api/elevators/step", {
       method: "POST",
     })
     await updateElevatorsStatus()
+  }
+
+  const changeServerElevatorsAmount = async (newElevatorsAmount: number) => {
+    await fetch(`api/elevators/update/amount/${newElevatorsAmount}`, {
+      method: "POST",
+    })
+    await updateElevatorsStatus()
+
   }
 
   return (
@@ -25,8 +35,9 @@ function ElevatorAdmin({ updateElevatorsStatus }: ElevatorAdminProps) {
         </button>
       </div>
       <div className="admin-button-section">
-        <p>Elevators</p>
-        <input type="range" min="1" max="16"/>
+        <p>{elevatorsAmount} elevators</p>
+        <input type="range" min="1" max="16" value={elevatorsAmount} onChange={(e) => setElevatorsAmount(e.target.value)}/>
+        <button className="admin-button rectangular-button" onClick={() => changeServerElevatorsAmount(elevatorsAmount)}>Apply</button>
       </div>
     </>
   );

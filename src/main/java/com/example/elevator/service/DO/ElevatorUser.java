@@ -10,6 +10,7 @@ public class ElevatorUser {
 
     public ElevatorUser(int pickupFloor, int destinationFloor) {
         this.pickupFloor = pickupFloor;
+        this.destinationFloor = destinationFloor;
     }
 
     public int getPickupFloor() {

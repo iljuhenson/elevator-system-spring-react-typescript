@@ -4,6 +4,7 @@
     border: none;
     font-weight: bold;
     color: var(--button-text-color);
+    cursor: pointer;
 }
 
 .square-button {

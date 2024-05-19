@@ -12,11 +12,12 @@ import java.util.List;
 @Service
 public class ElevatorSystem {
     private List<Elevator> elevators;
+    private int elevatorsAmount = 16;
 
     public ElevatorSystem() {
         elevators = new ArrayList<>();
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < elevatorsAmount; i++) {
             elevators.add(new Elevator(i, 0, 0));
         }
     }
@@ -40,6 +41,15 @@ public class ElevatorSystem {
     // Method to get the status of all elevators
     public List<Elevator> status() {
         return elevators;
+    }
+
+    public void updateElevatorsAmount(int elevatorsAmount) {
+        this.elevatorsAmount = elevatorsAmount;
+
+        elevators = new ArrayList<>();
+        for (int i = 0; i < this.elevatorsAmount; i++) {
+            elevators.add(new Elevator(i, 0, 0));
+        }
     }
 
     public Elevator findClosestElevator(int floor, int direction) {
