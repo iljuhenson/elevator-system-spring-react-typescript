@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Elevator {
     private int id;
-    private List<ElevatorUser> destinationFloors;
+    private List<ElevatorUser> destinationFloors = new ArrayList<>();
     private int currentFloor;
     private int direction;
 
@@ -84,9 +84,12 @@ public class Elevator {
 
         destinationFloors = destinationFloors.stream().filter(user -> !(user.isPickedUp() && user.getDestinationFloor() == currentFloor)).collect(Collectors.toList());
 
-        if (currentFloor > highestFloor) {
+        lowestFloor = findLowestFloor();
+        highestFloor = findHighestFloor();
+
+        if (currentFloor >= highestFloor) {
             direction = -1;
-        } else if (currentFloor < lowestFloor) {
+        } else if (currentFloor <= lowestFloor) {
             direction = 1;
         }
     }
@@ -109,12 +112,12 @@ public class Elevator {
         int lastDestinationFloor = findLowestFloor();
         int firstDestinationFloor = findHighestFloor();
 
-        if (direction == 0) {
+        if (firstDestinationFloor == -1) {
             return Math.abs(currentFloor - floor);
         } else if (afterPickupDirection == direction && currentFloor - floor == 0) {
             return 0;
         } else if (afterPickupDirection == direction && direction * (currentFloor - floor) > 0) {
-            return lastDestinationFloor - firstDestinationFloor + Math.min(floor, currentFloor) - firstDestinationFloor + lastDestinationFloor - Math.max(floor, currentFloor);
+            return Math.abs(lastDestinationFloor - firstDestinationFloor + Math.min(floor, currentFloor) - firstDestinationFloor + lastDestinationFloor - Math.max(floor, currentFloor));
         } else if (afterPickupDirection == direction && direction * (currentFloor - floor) < 0) {
             return Math.abs(floor - currentFloor);
         } else if (afterPickupDirection != direction && direction * (currentFloor - floor) > 0) {
@@ -123,7 +126,7 @@ public class Elevator {
             return (currentFloor > floor) ? currentFloor - firstDestinationFloor + floor - firstDestinationFloor : lastDestinationFloor - currentFloor + lastDestinationFloor - floor;
         } else {
             // fallback worst case scenario is going back and forth for 1 time
-            return 2 * (lastDestinationFloor - firstDestinationFloor);
+            return Math.abs(2 * (lastDestinationFloor - firstDestinationFloor));
         }
     }
 

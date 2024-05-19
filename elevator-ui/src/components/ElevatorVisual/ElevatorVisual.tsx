@@ -44,7 +44,6 @@ function ElevatorVisual({ elevatorsStatus }: ElevatorVisualProps) {
               </div>)
 
             } else if(elevator.destinationFloors.filter(user => user.destinationFloor === i && !user.pickedUp).length !== 0) {
-              console.log(elevator.destinationFloors[0]);
               floors.push(<div key={i}
                 className="elevator-visual-current-floor-outline elevator-visual-section-floor-destination-inactive-color">
                 <div className="elevator-visual-current-floor-gap">
