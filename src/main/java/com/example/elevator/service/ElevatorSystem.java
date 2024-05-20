@@ -24,6 +24,18 @@ public class ElevatorSystem {
 
     // Method to handle elevator calls
     public void pickup(int floor, int direction, int destination) {
+        if (floor > 29 || floor < 0 || destination> 29 || destination < 0) {
+            throw new IllegalArgumentException("Invalid floor");
+        }
+
+        if (!(direction == 1 || direction == -1)) {
+            throw new IllegalArgumentException("Invalid direction");
+        }
+
+        if (Math.signum(destination - floor) != direction) {
+            throw new IllegalArgumentException("Invalid destination");
+        }
+
         Elevator elevator = findClosestElevator(floor, direction);
         elevator.addStop(new ElevatorUser(floor, destination));
     }
@@ -44,6 +56,10 @@ public class ElevatorSystem {
     }
 
     public void updateElevatorsAmount(int elevatorsAmount) {
+        if(elevatorsAmount < 0 || elevatorsAmount > 16) {
+            throw new IllegalArgumentException("elevatorsAmount must be between 0 and 16");
+        }
+
         this.elevatorsAmount = elevatorsAmount;
 
         elevators = new ArrayList<>();
