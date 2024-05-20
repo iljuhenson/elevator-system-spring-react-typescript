@@ -63,7 +63,7 @@ public class Elevator {
     }
 
     public void step() {
-        if(destinationFloors.isEmpty()) {
+        if (destinationFloors.isEmpty()) {
             direction = 0;
             return;
         }
@@ -71,7 +71,7 @@ public class Elevator {
         int lowestFloor = findLowestFloor();
         int highestFloor = findHighestFloor();
 
-        if(direction == 0) {
+        if (direction == 0) {
             direction = (int) Math.signum(lowestFloor - currentFloor);
         }
 
@@ -86,8 +86,9 @@ public class Elevator {
 
         lowestFloor = findLowestFloor();
         highestFloor = findHighestFloor();
-
-        if (currentFloor >= highestFloor) {
+        if (lowestFloor == -1) {
+            direction = 0;
+        } else if (currentFloor >= highestFloor) {
             direction = -1;
         } else if (currentFloor <= lowestFloor) {
             direction = 1;
@@ -113,19 +114,34 @@ public class Elevator {
         int firstDestinationFloor = findHighestFloor();
 
         if (firstDestinationFloor == -1) {
+            System.out.println("1 case scenario");
             return Math.abs(currentFloor - floor);
         } else if (afterPickupDirection == direction && currentFloor - floor == 0) {
+            System.out.println("2 case scenario");
             return 0;
         } else if (afterPickupDirection == direction && direction * (currentFloor - floor) > 0) {
-            return Math.abs(lastDestinationFloor - firstDestinationFloor + Math.min(floor, currentFloor) - firstDestinationFloor + lastDestinationFloor - Math.max(floor, currentFloor));
+            System.out.println("3 case scenario");
+            if(direction > 0) {
+                return lastDestinationFloor - currentFloor + lastDestinationFloor - floor;
+            } else {
+                return currentFloor - firstDestinationFloor + floor - firstDestinationFloor;
+            }
         } else if (afterPickupDirection == direction && direction * (currentFloor - floor) < 0) {
+            System.out.println("4 case scenario");
             return Math.abs(floor - currentFloor);
         } else if (afterPickupDirection != direction && direction * (currentFloor - floor) > 0) {
-            return (currentFloor > floor) ? lastDestinationFloor - currentFloor + lastDestinationFloor - floor : currentFloor - firstDestinationFloor + floor - firstDestinationFloor;
+            System.out.println("5 case scenario");
+            if(direction > 0) {
+                return lastDestinationFloor - currentFloor + lastDestinationFloor - floor;
+            } else {
+                return currentFloor - firstDestinationFloor + floor - firstDestinationFloor;
+            }
         } else if (afterPickupDirection != direction && direction * (currentFloor - floor) < 0) {
-            return (currentFloor > floor) ? currentFloor - firstDestinationFloor + floor - firstDestinationFloor : lastDestinationFloor - currentFloor + lastDestinationFloor - floor;
+            System.out.println("6 case scenario");
+            return Math.abs(floor - currentFloor);
         } else {
             // fallback worst case scenario is going back and forth for 1 time
+            System.out.println("7 case scenario");
             return Math.abs(2 * (lastDestinationFloor - firstDestinationFloor));
         }
     }

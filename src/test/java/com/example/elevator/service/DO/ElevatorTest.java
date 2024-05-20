@@ -17,22 +17,23 @@ class ElevatorTest {
     }
 
     @Test
-    void findDistanceFromFloorElevatorGoesUpButUseGoesDown() {
-        Elevator elevator = new Elevator();
-        elevator.setCurrentFloor(5);
-        elevator.setDirection(1);
-        elevator.setDestinationFloors(new ArrayList<ElevatorUser>(Arrays.asList(new ElevatorUser(11, 2))));
-        assertEquals(8, elevator.findDistanceFromFloor(9, -1));
-    }
-
-    @Test
-    void findDistanceFromFloorElevatorGoesUpButUseGoesDown2() {
+    void findDistanceFromFloorElevatorGoesUpButUserGoesDown2() {
         Elevator elevator = new Elevator();
         elevator.setCurrentFloor(5);
         elevator.setDirection(1);
         elevator.setDestinationFloors(new ArrayList<ElevatorUser>(Arrays.asList(new ElevatorUser(11, 2))));
         assertEquals(15, elevator.findDistanceFromFloor(2, -1));
     }
+
+    @Test
+    void findDistanceFromFloorElevatorGoesUpButUserGoesDown3() {
+        Elevator elevator = new Elevator();
+        elevator.setCurrentFloor(5);
+        elevator.setDirection(1);
+        elevator.setDestinationFloors(new ArrayList<ElevatorUser>(Arrays.asList(new ElevatorUser(11, 2))));
+        assertEquals(3, elevator.findDistanceFromFloor(8, -1));
+    }
+
 
     @Test
     void findDistanceFromFloorElevatorGoesUpButUseGoesDownReverse() {
@@ -42,5 +43,15 @@ class ElevatorTest {
         elevator.setDestinationFloors(new ArrayList<ElevatorUser>(Arrays.asList(new ElevatorUser(2, 8))));
         assertEquals(7, elevator.findDistanceFromFloor(6, -1));
     }
+
+    @Test
+    void findDistanceFromFloorElevatorGoesDownPickupFloorIsBellow() {
+        Elevator elevator = new Elevator();
+        elevator.setCurrentFloor(5);
+        elevator.setDirection(-1);
+        elevator.setDestinationFloors(new ArrayList<ElevatorUser>(Arrays.asList(new ElevatorUser(2, 8))));
+        assertEquals(2, elevator.findDistanceFromFloor(3, 1));
+    }
+
 
 }
