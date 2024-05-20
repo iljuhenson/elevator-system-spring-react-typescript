@@ -39,26 +39,42 @@ You can query backend API over [localhost:8000](http://localhost:8000).
 
 ### :gear: Algorithmic approach
 
-For the way how elevators will be serving elevator calls and going
-to destination I chose SCAN Disk Scheduling algorithm logic for which
-is located over here **TODO: put link to implementation**. For optimization
-purposes and to decrease repetitiveness I use `direction` variable
-value everywhere it's possible.
-
-But this algorithm alone isn't enough to manage a whole system of elevators
-so I came up with an algorithm which will be counting the distance
-from the floor where elevator is located to the pickup floor and again
-`direction` comes very handy for optimization purposes. Let me explain:
+To make algorithmic explanation easier I will be using graphics with
+the following elements.
 
 <img src="./readme-images/sign-explanation.png" alt="Sign explanation">
 
-I've noticed that if I multiply distance between the elevator and pickup
-floor I will get values of the same sign but for opposite situations.
+For the way how elevators will be serving elevator calls and going
+to destination I chose SCAN Disk Scheduling algorithm:
+
+<img src="./readme-images/scan-explanation.png" alt="SCAN explanation">
+
+But the elevator is not just going from one pickup floor to another,
+instead it picks up a so called "Elevator User", who has 3 parameters
+such as: pickup floor, destination floor and whether this user has
+already been picked up. These "Elevator Users" build up the destinations
+arrays of all the Elevators:
+
+<img src="./readme-images/elevator-user-explanation.png" alt="Elevator User explanation">
+
+*But how those destination arrays are built up? How can "Elevator User" know
+which elevator should he wait for?*
+
+This is why I came up with an algorithm which calculates the distance
+from the floor where elevator is located to the pickup floor.
+
+This method requires to look through all the possible elevator positions,
+relative to their next destination, current direction and pickup floor position
+which we are checking against. There are 8 of such possibilities and 1 extra
+for stationary elevator.
+
+But thanks to the sign trick that I've noticed I reduced 8 possibilities
+to 4 similar case scenarios. Here's the trick explanation:
 
 <img src="./readme-images/elevator_sign_trick.png" alt="Sign trick">
 
-Thanks to that equation we can decrease amount of situations we have to
-look through by 2 times.
+All the described above business logic is located under
+`src/main/java/com/example/elevator/service` directory.
 
 ### :herb: Spring application
 
@@ -68,5 +84,5 @@ endpoints to all the elevator system functionalities.
 ### :newspaper: React application
 
 React application doesn't contain any business logic all that it does
-is displaying the whole elevator system and all the server
+is displaying the whole elevator system and all the api
 functionalities.
