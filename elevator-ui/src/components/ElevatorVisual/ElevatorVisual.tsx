@@ -7,7 +7,6 @@ interface ElevatorVisualProps {
 }
 
 function ElevatorVisual({ elevatorsStatus }: ElevatorVisualProps) {
-
     return (
       <>
         {elevatorsStatus.map(elevator => {

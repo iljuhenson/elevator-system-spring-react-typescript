@@ -53,5 +53,12 @@ class ElevatorTest {
         assertEquals(2, elevator.findDistanceFromFloor(3, 1));
     }
 
-
+    @Test
+    void findDistanceFromFloorBelow() {
+        Elevator elevator = new Elevator();
+        elevator.setCurrentFloor(8);
+        elevator.setDirection(1);
+        elevator.setDestinationFloors(new ArrayList<ElevatorUser>(Arrays.asList(new ElevatorUser(13, 8, false), new ElevatorUser(5, 3, true))));
+        assertEquals(16, elevator.findDistanceFromFloor(2, -1));
+    }
 }
