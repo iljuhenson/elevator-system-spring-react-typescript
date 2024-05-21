@@ -40,10 +40,21 @@ public class ElevatorSystem {
         elevator.addStop(new ElevatorUser(floor, destination));
     }
 
-    // Method to update elevator state
-//    public void addDestination(int elevatorId, int currentFloor, int destinationFloor) {
-//        elevators.get(elevatorId).addStop(destinationFloor);
-//    }
+    public void updateElevatorLocationAndDestinationById(int elevatorId, int newCurrentFloor, int destination) {
+        if (newCurrentFloor > 29 || newCurrentFloor < 0 || destination > 29 || destination < 0) {
+            throw new IllegalArgumentException("Invalid floors were given");
+        }
+
+        if (newCurrentFloor == destination) {
+            throw new IllegalArgumentException("Destination and new current floor cannot be the same");
+        }
+
+        if (elevatorId < 0 || elevatorId > elevators.size() - 1) {
+            throw new IllegalArgumentException("Invalid elevator id");
+        }
+
+        elevators.get(elevatorId).updateLocation(newCurrentFloor, destination);
+    }
 
     // Method to simulate movement of elevators
     public void step() {
@@ -54,7 +65,6 @@ public class ElevatorSystem {
     public List<Elevator> status() {
         return elevators;
     }
-
     public void updateElevatorsAmount(int elevatorsAmount) {
         if(elevatorsAmount < 0 || elevatorsAmount > 16) {
             throw new IllegalArgumentException("elevatorsAmount must be between 0 and 16");

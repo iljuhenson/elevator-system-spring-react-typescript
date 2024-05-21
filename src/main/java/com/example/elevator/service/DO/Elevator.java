@@ -62,6 +62,13 @@ public class Elevator {
         destinationFloors.add(user);
     }
 
+    public void updateLocation(int currentFloor, int destinationFloor) {
+        ElevatorUser newElevatorUser = new ElevatorUser(currentFloor, destinationFloor);
+        destinationFloors.add(newElevatorUser);
+        this.currentFloor = currentFloor;
+        this.direction = (int) Math.signum(destinationFloor - currentFloor);
+    }
+
     public void step() {
         if (destinationFloors.isEmpty()) {
             direction = 0;

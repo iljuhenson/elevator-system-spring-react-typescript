@@ -1,5 +1,6 @@
 package com.example.elevator.controller;
 
+import com.example.elevator.controller.error.ErrorMessageObject;
 import com.example.elevator.service.DO.Elevator;
 import com.example.elevator.service.ElevatorSystem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class ElevatorSystemController {
 
     @PostMapping("/update/elevator/{elevatorId}/floor/{currentFloor}/destination/{destinationFloor}")
     public void update(@PathVariable int elevatorId, @PathVariable int currentFloor, @PathVariable int destinationFloor) {
-        // to implement
+        elevatorSystem.updateElevatorLocationAndDestinationById(elevatorId, currentFloor, destinationFloor);
     }
 
     @PostMapping("/update/amount/{elevatorsAmount}")
@@ -47,9 +48,9 @@ public class ElevatorSystemController {
     }
 
     @ExceptionHandler({ IllegalArgumentException.class })
-    public ResponseEntity<Object> handleException(Exception ex, WebRequest request) {
-        return new ResponseEntity<Object>(
-            ex.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST
+    public ResponseEntity<ErrorMessageObject> handleException(Exception ex, WebRequest request) {
+        return new ResponseEntity<ErrorMessageObject>(
+            new ErrorMessageObject(ex.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST
         );
     }
 }
