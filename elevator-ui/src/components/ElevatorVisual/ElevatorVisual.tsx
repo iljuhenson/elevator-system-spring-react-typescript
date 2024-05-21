@@ -66,7 +66,7 @@ function ElevatorVisual({ elevatorsStatus }: ElevatorVisualProps) {
             }
           }
 
-          return <div key={elevator.id} className="elevator-visual-floors-container">{floors}</div>
+          return <div key={elevator.id} className="elevator-visual-floors-container"><div>{elevator.id}</div>{floors}</div>
         })}
       </>
     );

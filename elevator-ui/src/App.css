@@ -21,6 +21,7 @@
     flex-direction: column;
     gap: 4px;
     padding: 5px 10px;
+    justify-content: end;
 }
 
 .elevator-visual-section {

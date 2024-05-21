@@ -3,7 +3,11 @@ package com.example.elevator.controller;
 import com.example.elevator.service.DO.Elevator;
 import com.example.elevator.service.ElevatorSystem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.List;
 
@@ -40,6 +44,12 @@ public class ElevatorSystemController {
     @PostMapping("/update/amount/{elevatorsAmount}")
     public void updateElevatorsAmount(@PathVariable int elevatorsAmount) {
         elevatorSystem.updateElevatorsAmount(elevatorsAmount);
+    }
+
+    @ExceptionHandler({ IllegalArgumentException.class })
+    public ResponseEntity<Object> handleException(Exception ex, WebRequest request) {
+        return new ResponseEntity<Object>(
+                ex.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
 }
