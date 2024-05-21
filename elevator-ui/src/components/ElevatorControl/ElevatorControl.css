@@ -58,3 +58,17 @@
     border-top: calc(var(--elevator-visual-section-floor-size) / 1.5 * 1px) solid var(--elevator-visual-section-bg-color);
 }
 
+.mini-button {
+    height: calc(var(--elevator-visual-section-floor-size) * 1px);
+    font-size: calc((var(--elevator-visual-section-floor-size) / 1.7) * 1px);
+    background-color: var(--button-color);
+    border-radius: var(--border-radius-size);
+    border: none;
+    font-weight: bold;
+    color: var(--button-text-color);
+    cursor: pointer;
+}
+
+.invisible {
+    display: none;
+}

@@ -49,7 +49,7 @@ public class ElevatorSystemController {
     @ExceptionHandler({ IllegalArgumentException.class })
     public ResponseEntity<Object> handleException(Exception ex, WebRequest request) {
         return new ResponseEntity<Object>(
-                ex.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
+            ex.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST
+        );
     }
-
 }

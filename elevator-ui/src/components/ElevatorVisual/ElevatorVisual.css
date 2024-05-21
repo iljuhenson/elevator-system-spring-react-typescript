@@ -55,3 +55,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+.elevator-visual-index {
+    height: calc(var(--elevator-visual-section-floor-size) * 1px);
+}
