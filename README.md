@@ -6,6 +6,7 @@
   <a href="#tech-stack">Tech stack</a> •
   <a href="#overview">Overview</a> •
   <a href="#try">How to run it</a> •
+  <a href="#manual">User manual</a> •
   <a href="#app-architecture">Application architecture</a>
 </p>
 
@@ -34,6 +35,62 @@ $ docker-compose up -d --build
 
 The UI of application is available at [localhost:3000](http://localhost:3000).<br/>
 You can query backend API over [localhost:8000](http://localhost:8000).
+
+## <a name="manual"></a>:closed_book: User manual
+
+The UI can be broken into 3 parts:
+
+<img src="./readme-images/ui-manual-parts.png" alt="UI parts">
+
+1. Control section - responsible for interactions of "Elevator Users"
+   with elevator system
+1. Visual section - shows current state of all the elevators in the
+   system
+1. Admin section - controls elevator system "time" and server
+   parameters
+
+Let's break down each section:
+
+### Control section
+
+Control section has 2 states: active(on the left) and
+inactive(on the right)
+
+<img src="./readme-images/ui-control-section.png" alt="UI Control section">
+
+1. Cancel button - allows cancelling unfinished elevator call
+1. Inactive direction buttons - state in which direction buttons
+   appear when elevator was called to arrive at floor **X**. Those
+   buttons don't do anything
+1. Active direction buttons - set pickup floor and direction
+1. Active floor label - shows the floor number and sets destination
+   floor
+1. Inactive floor label - shows the floor number and does nothing
+   on click
+
+### Visual section
+
+<img src="./readme-images/ui-visual-section.png" alt="UI Visual section">
+
+1. Elevator point - place where elevator is located
+1. Blank point - regular floor with no events
+1. Pickup point - place where "Elevator User" is located
+1. Inactive destination point - place where "Elevator User" wants to get
+   but this user is not in the elevator
+1. Active destination point - same as above, but user is inside
+   the elevator
+1. Elevator id
+
+### Admin section
+
+<img src="./readme-images/ui-admin-section.png" alt="UI Admin section">
+
+1. Step button - invokes a step of simulation
+1. Elevator amount subsection - allows users to set up simulation
+   with up to 16 elevators
+1. Update button - allows entering into "Update Mode" which in
+   combination with Visual Section allows you to change elevator
+   position and its destination
 
 ## <a name="app-architecture"></a>:triangular_ruler: Application architecture
 
