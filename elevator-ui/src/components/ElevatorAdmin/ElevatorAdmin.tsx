@@ -3,10 +3,12 @@ import "./ElevatorAdmin.css"
 interface ElevatorAdminProps {
   updateElevatorsStatus: Function;
   setElevatorsAmount: Function;
-  elevatorsAmount: number
+  elevatorsAmount: number;
+  updateMode: boolean;
+  toggleUpdateMode: Function;
 }
 
-function ElevatorAdmin({ updateElevatorsStatus, setElevatorsAmount, elevatorsAmount }: ElevatorAdminProps) {
+function ElevatorAdmin({ updateElevatorsStatus, setElevatorsAmount, elevatorsAmount, updateMode, toggleUpdateMode }: ElevatorAdminProps) {
   const step = async () => {
     await fetch("api/elevators/step", {
       method: "POST",
@@ -30,8 +32,8 @@ function ElevatorAdmin({ updateElevatorsStatus, setElevatorsAmount, elevatorsAmo
             Step
           </p>
         </button>
-        <button className="admin-button rectangular-button">
-          Update
+        <button onClick={() => toggleUpdateMode()} className={`admin-button rectangular-button ${updateMode ? "admin-cancel-button" : ""}`}>
+          {updateMode ? "Cancel" : "Update"}
         </button>
       </div>
       <div className="admin-button-section">

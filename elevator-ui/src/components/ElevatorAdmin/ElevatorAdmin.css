@@ -30,3 +30,8 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.admin-cancel-button {
+    background-color: var(--cancel-button-color);
+    z-index: 5;
+}
