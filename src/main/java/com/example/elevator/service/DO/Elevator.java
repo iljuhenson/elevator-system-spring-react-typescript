@@ -60,6 +60,9 @@ public class Elevator {
 
     public void addStop(ElevatorUser user) {
         destinationFloors.add(user);
+        if (direction == 0) {
+            direction = (int) Math.signum(user.getPickupFloor() - currentFloor);
+        }
     }
 
     public void updateLocation(int currentFloor, int destinationFloor) {

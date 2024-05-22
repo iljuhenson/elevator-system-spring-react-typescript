@@ -3,6 +3,6 @@ FROM node:iron-alpine
 WORKDIR /app
 
 COPY ./ ./
-RUN npm i
+RUN npm ci
 
 CMD ["npm", "run", "dev"]
