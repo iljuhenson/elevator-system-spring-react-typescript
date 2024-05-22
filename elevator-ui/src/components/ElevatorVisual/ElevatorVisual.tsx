@@ -48,7 +48,7 @@ function ElevatorVisual({ elevatorsStatus, updateElevatorId, updateMode, choseUp
           for (let i = 29; i >= 0; --i) {
 
             if (elevator.currentFloor === i) {
-              floors.push(<div onClick={() => updateCurrentFloor === null ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
+              floors.push(<div onClick={() => updateCurrentFloor === null && updateMode ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i && updateMode ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
                   className={`elevator-visual-current-floor-outline elevator-visual-section-floor-main-color ${hoveredElevatorId === elevator.id && hoveredElevatorFloor === i && updateCurrentFloor !== i ? "elevator-visual-hovered-floor" : ""} ${updateCurrentFloor === i ? "elevator-visual-section-floor-pickup-color" : ""}`}>
                   <div className="elevator-visual-current-floor-gap elevator-visual-current-floor-gap-color">
                     <div className="elevator-visual-current-floor-inside elevator-visual-section-floor-main-color">
@@ -58,7 +58,7 @@ function ElevatorVisual({ elevatorsStatus, updateElevatorId, updateMode, choseUp
                 </div>
               )
             } else if(elevator.destinationFloors.filter(user => user.pickupFloor === i && !user.pickedUp).length !== 0) {
-              floors.push(<div onClick={() => updateCurrentFloor === null ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
+              floors.push(<div onClick={() => updateCurrentFloor === null && updateMode ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i && updateMode ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
                 className={`elevator-visual-current-floor-outline ${hoveredElevatorId === elevator.id && hoveredElevatorFloor === i && updateCurrentFloor !== i ? "elevator-visual-hovered-floor" : ""} ${updateCurrentFloor === i ? "elevator-visual-section-floor-pickup-color" : ""}`}>
                 <div className="elevator-visual-current-floor-gap elevator-visual-section-floor-pickup-color">
                   <div className="elevator-visual-current-floor-inside">
@@ -67,7 +67,7 @@ function ElevatorVisual({ elevatorsStatus, updateElevatorId, updateMode, choseUp
                 </div>
               </div>)
             } else if(elevator.destinationFloors.filter(user => user.destinationFloor === i && user.pickedUp).length !== 0) {
-              floors.push(<div onClick={() => updateCurrentFloor === null ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
+              floors.push(<div onClick={() => updateCurrentFloor === null && updateMode ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i && updateMode ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
                 className={`elevator-visual-current-floor-outline ${hoveredElevatorId === elevator.id && hoveredElevatorFloor === i && updateCurrentFloor !== i ? "elevator-visual-hovered-floor" : ""} ${updateCurrentFloor === i ? "elevator-visual-section-floor-pickup-color" : ""}`}>
                 <div className="elevator-visual-current-floor-gap elevator-visual-section-floor-destination-active-color">
                   <div className="elevator-visual-current-floor-inside">
@@ -77,7 +77,7 @@ function ElevatorVisual({ elevatorsStatus, updateElevatorId, updateMode, choseUp
               </div>)
 
             } else if(elevator.destinationFloors.filter(user => user.destinationFloor === i && !user.pickedUp).length !== 0) {
-              floors.push(<div onClick={() => updateCurrentFloor === null ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
+              floors.push(<div onClick={() => updateCurrentFloor === null && updateMode ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i && updateMode ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
                 className={`elevator-visual-current-floor-outline ${hoveredElevatorId === elevator.id && hoveredElevatorFloor === i && updateCurrentFloor !== i ? "elevator-visual-hovered-floor" : ""} ${updateCurrentFloor === i ? "elevator-visual-section-floor-pickup-color" : ""}`}>
                 <div className="elevator-visual-current-floor-gap elevator-visual-section-floor-destination-inactive-color">
                   <div className="elevator-visual-current-floor-inside">
@@ -88,7 +88,7 @@ function ElevatorVisual({ elevatorsStatus, updateElevatorId, updateMode, choseUp
 
             } else {
               floors.push(
-                <div onClick={() => updateCurrentFloor === null ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
+                <div onClick={() => updateCurrentFloor === null && updateMode ? choseUpdateCurrentFloorAndId(elevator.id, i) : updateCurrentFloor !== i && updateMode ? sendUpdateRequest(i) : false} onMouseEnter={() => mouseHoverOn(elevator.id, i)} onMouseLeave={() => mouseHoverOff()} key={i}
                   className={`elevator-visual-current-floor-outline ${hoveredElevatorId === elevator.id && hoveredElevatorFloor === i && updateCurrentFloor !== i ? "elevator-visual-hovered-floor" : ""} ${updateCurrentFloor === i ? "elevator-visual-section-floor-pickup-color" : ""}`}>
                   <div className="elevator-visual-current-floor-gap">
                     <div className="elevator-visual-current-floor-inside elevator-visual-section-floor-main-color">
