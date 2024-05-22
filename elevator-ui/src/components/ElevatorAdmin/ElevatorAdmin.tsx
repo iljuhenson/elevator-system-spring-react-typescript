@@ -38,7 +38,7 @@ function ElevatorAdmin({ updateElevatorsStatus, setElevatorsAmount, elevatorsAmo
       </div>
       <div className="admin-button-section">
         <p>{elevatorsAmount} elevators</p>
-        <input type="range" min="1" max="16" value={elevatorsAmount} onChange={(e) => setElevatorsAmount(e.target.value)}/>
+        <input className="elevator-admin-elevator-amount-dial" type="range" min="1" max="16" value={elevatorsAmount} onChange={(e) => setElevatorsAmount(e.target.value)}/>
         <button className="admin-button rectangular-button" onClick={() => changeServerElevatorsAmount(elevatorsAmount)}>Apply</button>
       </div>
     </>

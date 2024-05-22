@@ -13,17 +13,20 @@ function App() {
   const [updateMode, setUpdateMode] = useState(false);
   const [updateCurrentFloor, setUpdateCurrentFloor] = useState<null | number>(null);
   const [updateElevatorId, setUpdateElevatorId] = useState<null | number>(null);
-  const [updateDestinationFloor, setUpdateDestinationFloor] = useState<null | number>(null);
 
   const toggleUpdateMode = () => {
     if(updateMode) {
       setUpdateMode(false);
       setUpdateCurrentFloor(null);
       setUpdateElevatorId(null);
-      setUpdateDestinationFloor(null);
     } else {
       setUpdateMode(true);
     }
+  }
+
+  const choseUpdateCurrentFloorAndId = (newUpdateElevatorId: number, newUpdateCurrentFloor: number) => {
+    setUpdateElevatorId(newUpdateElevatorId);
+    setUpdateCurrentFloor(newUpdateCurrentFloor);
   }
 
   const initPickupData = (newFloor: number, newDirection: number) => {
@@ -64,7 +67,8 @@ function App() {
                              updateElevatorStatus={updateElevatorsStatus} resetPickupData={resetPickupData}/>
           </div>
           <div className="elevator-visual-section">
-            <ElevatorVisual elevatorsStatus={elevatorsStatus}/>
+            <div className={`${updateElevatorId !== null ? "elevator-admin-section-cover" : "elevator-admin-section-cover-inactive"} `}></div>
+            <ElevatorVisual toggleUpdateMode={toggleUpdateMode} updateElevatorsStatus={updateElevatorsStatus} choseUpdateCurrentFloorAndId={choseUpdateCurrentFloorAndId} elevatorsStatus={elevatorsStatus} updateCurrentFloor={updateCurrentFloor} updateElevatorId={updateElevatorId} updateMode={updateMode}/>
           </div>
           <div className="elevator-admin-section">
             <div className={`${pickupFloor !== null ? "elevator-admin-section-cover" : "elevator-admin-section-cover-inactive"}`}></div>

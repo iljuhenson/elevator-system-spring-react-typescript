@@ -59,3 +59,12 @@
 .elevator-visual-index {
     height: calc(var(--elevator-visual-section-floor-size) * 1px);
 }
+
+.elevator-visual-selected-elevator {
+    z-index: 10;
+}
+
+.elevator-visual-hovered-floor {
+    background-color: var(--elevator-visual-section-floor-hover);
+    cursor: pointer;
+}

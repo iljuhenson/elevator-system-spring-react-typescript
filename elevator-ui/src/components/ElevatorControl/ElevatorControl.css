@@ -21,6 +21,7 @@
 .floor-label-active {
     background-color: var(--button-color);
     color: var(--button-text-color);
+    cursor: pointer;
 }
 
 .floor-label-inactive {
@@ -52,10 +53,12 @@
 
 .pickup-up-inactive {
     border-bottom: calc(var(--elevator-visual-section-floor-size) / 1.5 * 1px) solid var(--elevator-visual-section-bg-color);
+    cursor: auto;
 }
 
 .pickup-down-inactive {
     border-top: calc(var(--elevator-visual-section-floor-size) / 1.5 * 1px) solid var(--elevator-visual-section-bg-color);
+    cursor: auto;
 }
 
 .mini-button {

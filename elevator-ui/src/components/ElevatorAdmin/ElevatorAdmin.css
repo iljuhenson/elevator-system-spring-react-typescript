@@ -5,6 +5,7 @@
     font-weight: bold;
     color: var(--button-text-color);
     cursor: pointer;
+    font-family: 'Courier New', monospace;
 }
 
 .square-button {
@@ -34,4 +35,8 @@
 .admin-cancel-button {
     background-color: var(--cancel-button-color);
     z-index: 5;
+}
+
+.elevator-admin-elevator-amount-dial {
+    width: 140px;
 }
