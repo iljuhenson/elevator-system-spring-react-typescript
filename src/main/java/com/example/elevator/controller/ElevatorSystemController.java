@@ -13,6 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "https://elevators.iljuhenson.com")
 @RequestMapping("/api/elevators")
 public class ElevatorSystemController {
     private final ElevatorSystem elevatorSystem;
