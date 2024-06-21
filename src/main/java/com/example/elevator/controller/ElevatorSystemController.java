@@ -32,6 +32,12 @@ public class ElevatorSystemController {
         elevatorSystem.step();
     }
 
+    @PostMapping("/reset")
+    public void resetElevatorsStates() {
+        elevatorSystem.resetElevatorStates();
+    }
+
+
     @GetMapping("/status")
     public List<Elevator> status() {
         return elevatorSystem.status();

@@ -61,4 +61,16 @@ class ElevatorTest {
         elevator.setDestinationFloors(new ArrayList<ElevatorUser>(Arrays.asList(new ElevatorUser(13, 8, false), new ElevatorUser(5, 3, true))));
         assertEquals(16, elevator.findDistanceFromFloor(2, -1));
     }
+
+    @Test
+    void elevatorReset() {
+        Elevator elevator = new Elevator();
+        elevator.setCurrentFloor(5);
+        elevator.setDirection(1);
+        elevator.setDestinationFloors(new ArrayList<ElevatorUser>(Arrays.asList(new ElevatorUser(13, 8, false), new ElevatorUser(5, 3, true))));
+        elevator.reset();
+        assertEquals(elevator.getCurrentFloor(), 0);
+        assertEquals(elevator.getDirection(), 0);
+        assertEquals(elevator.getDestinationFloors().size(), 0);
+    }
 }

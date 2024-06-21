@@ -118,6 +118,12 @@ public class Elevator {
         return Collections.min(destinationFloors, (u1, u2) -> u1.calculateActiveDestination() - u2.calculateActiveDestination()).calculateActiveDestination();
     }
 
+    public void reset() {
+        currentFloor = 0;
+        direction = 0;
+        destinationFloors = new ArrayList<>();
+    }
+
     public int findHighestFloor() {
         if(destinationFloors.isEmpty()) {
             return -1;

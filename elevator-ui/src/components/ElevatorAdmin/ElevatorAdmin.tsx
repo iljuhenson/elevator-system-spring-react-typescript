@@ -24,6 +24,14 @@ function ElevatorAdmin({ updateElevatorsStatus, setElevatorsAmount, elevatorsAmo
 
   }
 
+  const resetElevators = async () => {
+    await fetch(`api/elevators/reset`, {
+      method: "POST",
+    })
+    await updateElevatorsStatus()
+
+  }
+
   return (
     <>
       <div className="admin-button-section">
@@ -34,6 +42,9 @@ function ElevatorAdmin({ updateElevatorsStatus, setElevatorsAmount, elevatorsAmo
         </button>
         <button onClick={() => toggleUpdateMode()} className={`admin-button rectangular-button ${updateMode ? "admin-cancel-button" : ""}`}>
           {updateMode ? "Cancel" : "Update"}
+        </button>
+        <button className="admin-button rectangular-button" onClick={() => resetElevators()}>
+          Reset Elevators
         </button>
       </div>
       <div className="admin-button-section">

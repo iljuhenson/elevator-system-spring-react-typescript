@@ -3,6 +3,7 @@ package com.example.elevator.service;
 import com.example.elevator.service.DO.Elevator;
 import com.example.elevator.service.DO.ElevatorUser;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,6 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Service
+@SessionScope
 public class ElevatorSystem {
     private List<Elevator> elevators;
     private int elevatorsAmount = 16;
@@ -20,6 +22,17 @@ public class ElevatorSystem {
         for (int i = 0; i < elevatorsAmount; i++) {
             elevators.add(new Elevator(i, 0, 0));
         }
+    }
+
+    public void setElevators(List<Elevator> elevators) {
+        if(elevators.size() != elevatorsAmount) {
+            return;
+        }
+        this.elevators = elevators;
+    }
+
+    public List<Elevator> getElevators() {
+        return elevators;
     }
 
     // Method to handle elevator calls
@@ -59,6 +72,10 @@ public class ElevatorSystem {
     // Method to simulate movement of elevators
     public void step() {
         elevators.forEach(Elevator::step);
+    }
+
+    public void resetElevatorStates() {
+        elevators.forEach(Elevator::reset);
     }
 
     // Method to get the status of all elevators
